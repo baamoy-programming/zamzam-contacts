@@ -17,7 +17,7 @@ const Card = ({ user }) => {
   const [more, setMore] = useState(false);
 
   return (
-    <article className="rounded-md text-zinc-600 shadow-md">
+    <article className="rounded-md text-zinc-600 shadow-md" key={user._id}>
       <div className=" text-xs space-y-2 flex flex-col justify-center items-center">
         <div className="w-full md:h-36 h-24  rounded-sm mb-2">
           <img
