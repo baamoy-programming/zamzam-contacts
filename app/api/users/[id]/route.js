@@ -17,7 +17,7 @@ export async function PUT(request, { params }) {
     address,
     postcode,
     telephone,
-    img,
+    image,
   });
   return NextResponse.json({ message: "User updated" }, { status: 200 });
 }

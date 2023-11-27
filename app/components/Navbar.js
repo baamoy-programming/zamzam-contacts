@@ -3,7 +3,7 @@ import { MdHome, MdInventory2, MdPeople } from "react-icons/md";
 
 const Navbar = () => {
   return (
-    <div className="text-xs flex md:flex-col md:h-full justify-between items-center p-5 md:py-5 bg-secondary shadow-lg">
+    <div className="text-xs flex md:flex-col md:h-full justify-between items-center p-5 md:py-5 shadow-lg">
       <div className=" text-sm font-medium  flex md:flex-col gap-2 items-center md:space-y-16">
         <img src="./logo.png" alt="" className=" w-16" />
 

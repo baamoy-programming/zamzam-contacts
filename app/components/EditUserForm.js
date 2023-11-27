@@ -1,40 +1,40 @@
 "use client";
-import { useRouter } from "next/navigation";
+import React from "react";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
-const Form = () => {
-  const [title, setTitle] = useState("");
-  const [address, setAddress] = useState("");
-  const [postcode, setPostcode] = useState("");
-  const [telephone, setTelephone] = useState("");
-  const [image, setImage] = useState("");
-  const [err, setErr] = useState("");
+const EditUserForm = ({ id, title, address, postcode, telephone, image }) => {
+  const [newTitle, setNewTitle] = useState(title);
+  const [newAddress, setNewAddress] = useState(address);
+  const [newPostcode, setNewPostcode] = useState(postcode);
+  const [newTelephone, setNewTelephone] = useState(telephone);
+  const [newImage, setNewImage] = useState(image);
 
   const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!title || !address || !postcode || !telephone) {
-      setErr("This field is required");
-      return;
-    }
-
     try {
-      const res = await fetch("http://localhost:3000/api/users", {
-        method: "POST",
+      const res = await fetch(`http://localhost:3000/api/users/${id}`, {
+        method: "PUT",
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({ title, address, postcode, telephone, image }),
+        body: JSON.stringify({
+          newTitle,
+          newAddress,
+          newPostcode,
+          newTelephone,
+          newImage,
+        }),
       });
 
-      if (res.ok) {
-        router.refresh();
-        router.push("/");
-      } else {
-        throw new Error("Failed to create a customer");
+      if (!res.ok) {
+        throw new Error("Failed to update topic");
       }
+
+      router.refresh();
+      router.push("/");
     } catch (error) {
       console.log(error);
     }
@@ -45,87 +45,82 @@ const Form = () => {
       <form
         onSubmit={handleSubmit}
         action=""
-        className=" p-12 text-zinc-500 w-[25rem] space-y-6 shadow-lg"
+        className=" p-12 text-zinc-500 w-[25rem] space-y-7 shadow-lg"
       >
-        <h1 className=" font-bold text-zinc-600 text-lg">Create a new customer</h1>
+        <h1 className=" font-bold text-zinc-600 text-lg">Update existing customer</h1>
 
         {/* input group here */}
         <div className="input-group flex flex-col space-y-1 ">
-          <label htmlFor="Customer">
+          <label htmlFor="Customer" className="font-bold">
             Customer
           </label>
           <input
             type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            value={newTitle}
+            onChange={(e) => setNewTitle(e.target.value)}
             className=" border text-xs border-zinc-200 rounded-sm py-2 px-3 bg-transparent outline-none"
           />
         </div>
 
         {/* input group here */}
         <div className="input-group flex flex-col space-y-1 ">
-          <label htmlFor="street">
+          <label htmlFor="street" className="font-bold">
             Street
           </label>
           <input
             type="text"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
+            value={newAddress}
+            onChange={(e) => setNewAddress(e.target.value)}
             className=" border text-xs border-zinc-200 rounded-sm py-2 px-3 bg-transparent outline-none"
           />
         </div>
         {/* input group here */}
         <div className="input-group flex flex-col space-y-1 ">
-          <label htmlFor="postcode">
+          <label htmlFor="postcode" className="font-bold">
             Postcode
           </label>
           <input
             type="text"
-            value={postcode}
-            onChange={(e) => setPostcode(e.target.value)}
+            value={newPostcode}
+            onChange={(e) => setNewPostcode(e.target.value)}
             className=" border text-xs border-zinc-200 rounded-sm py-2 px-3 bg-transparent outline-none"
           />
         </div>
         {/* input group here */}
         <div className="input-group flex flex-col space-y-1 ">
-          <label htmlFor="telephone">
+          <label htmlFor="telephone" className="font-bold">
             Telephone
           </label>
           <input
             type="text"
-            value={telephone}
-            onChange={(e) => setTelephone(e.target.value)}
+            value={newTelephone}
+            onChange={(e) => setNewTelephone(e.target.value)}
             className=" border text-xs border-zinc-200 rounded-sm py-2 px-3 bg-transparent outline-none"
           />
         </div>
 
         {/* input group here */}
         <div className="input-group flex flex-col space-y-1 ">
-          <label htmlFor="image">
+          <label htmlFor="image" className="font-bold">
             Image
           </label>
           <input
             type="text"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
+            value={newImage}
+            onChange={(e) => setNewImage(e.target.value)}
             className=" border text-xs border-zinc-200 rounded-sm py-2 px-3 bg-transparent outline-none"
           />
         </div>
 
-        {/* Error message */}
-        <div className="h-4">
-          <small className=" text-red-400 text-xs ">{err}</small>
-        </div>
-
         <button
           type="submit"
-          className=" text-xs py-2 w-full px-4 border-none bg-blue-500 text-white rounded-sm"
+          className=" text-xs font-bold py-2 w-full px-4 border-none bg-blue-500 text-white rounded-sm"
         >
-          Create customer
+          Update customer
         </button>
       </form>
     </div>
   );
 };
 
-export default Form;
+export default EditUserForm;

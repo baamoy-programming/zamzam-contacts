@@ -26,7 +26,7 @@ const Card = ({ user }) => {
             className=" w-full h-full rounded-sm object-cover"
           />
         </div>
-        <h1 className=" text-sm font-semibold">{user.title}</h1>
+        <h1 className=" text-sm text-center font-semibold">{user.title}</h1>
         <a
           href={`https://www.google.com/maps?q=${user.address}`}
           className="flex items-center gap-1"
@@ -38,24 +38,24 @@ const Card = ({ user }) => {
           href={`https://www.google.com/maps?q=${user.address}`}
           className="flex items-center gap-1"
         >
-          <MdPhone /> <small className=" text-zinc-400">0{user.telephone}</small>
+          <MdPhone />{" "}
+          <small className=" text-zinc-400">0{user.telephone}</small>
         </a>
-        
+
         <a
           href={`https://www.google.com/maps?q=${user.address}`}
           className="flex items-center gap-1"
         >
-          <MdWhatsapp /> <small className=" text-zinc-400">0{user.telephone}</small>
+          <MdWhatsapp />{" "}
+          <small className=" text-zinc-400">0{user.telephone}</small>
         </a>
-        
-        
       </div>
 
-    
-
       <div className="p-2 gap-4 flex justify-center mt-2">
-        <RemoveBtn />
-        <UpdateBtn />
+        <RemoveBtn id={user._id} />
+        <Link href={`/editUser/${user._id}`}>
+          <UpdateBtn />
+        </Link>
       </div>
     </article>
   );

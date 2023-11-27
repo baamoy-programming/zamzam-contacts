@@ -6,7 +6,7 @@ import Link from "next/link";
 const getUsers = async () => {
   try {
     const res = await fetch("http://localhost:3000/api/users", {
-      cache: "no-cache",
+      cache: "no-store",
     });
 
     if (!res.ok) {
@@ -25,7 +25,10 @@ export default async function Home() {
       <div className=" text-zinc-600 mb-12 flex justify-between">
         <h1 className=" text-xl">Customers</h1>
         <div className=" flex gap-1">
-          <Link href='/add-customer' className=" text-xs text-white p-2 bg-blue-500 border-none rounded-sm flex items-center gap-2">
+          <Link
+            href="/add-customer"
+            className=" text-xs text-white p-2 bg-blue-500 border-none rounded-sm flex items-center gap-2"
+          >
             <MdPersonAdd />
             <small>Add New</small>
           </Link>
