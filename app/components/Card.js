@@ -13,11 +13,11 @@ import Link from "next/link";
 import RemoveBtn from "./RemoveBtn";
 import UpdateBtn from "./UpdateBtn";
 
-const Card = ({ user }) => {
+const Card = ({ user, key }) => {
   const [more, setMore] = useState(false);
 
   return (
-    <article className="rounded-md text-zinc-600 shadow-md" key={user._id}>
+    <article className="rounded-md text-zinc-600 shadow-md" key={key}>
       <div className=" text-xs space-y-2 flex flex-col justify-center items-center">
         <div className="w-full md:h-36 h-24  rounded-sm mb-2">
           <img

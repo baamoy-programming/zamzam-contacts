@@ -39,7 +39,9 @@ export default async function Home() {
       </div>
       <div className="wrapper grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 ">
         {users.map((user) => (
-          <Card user={user} />
+          <div key={user._id}>
+            <Card user={user} key={user._id} />
+          </div>
         ))}
       </div>
     </div>
