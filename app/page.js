@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const getUsers = async () => {
   try {
-    const res = await fetch("http://127.0.0.1:3000/api/users", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_ROOT_URL}/api/users`, {
       cache: "no-store",
     });
 

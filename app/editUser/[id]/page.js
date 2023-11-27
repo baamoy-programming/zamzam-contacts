@@ -3,9 +3,12 @@ import React from "react";
 
 const getUserById = async (id) => {
   try {
-    const res = await fetch(`http://127.0.0.1:3000/api/users/${id}`, {
-      cache: "no-store",
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_ROOT_URL}/api/users/${id}`,
+      {
+        cache: "no-store",
+      }
+    );
 
     if (!res.ok) {
       throw new Error("Failed to fetch user");

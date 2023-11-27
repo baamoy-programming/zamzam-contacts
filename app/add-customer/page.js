@@ -21,7 +21,7 @@ const Form = () => {
     }
 
     try {
-      const res = await fetch("http://127.0.0.1:3000/api/users", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_ROOT_URL}/api/users`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -47,13 +47,13 @@ const Form = () => {
         action=""
         className=" p-12 text-zinc-500 w-[25rem] space-y-6 shadow-lg"
       >
-        <h1 className=" font-bold text-zinc-600 text-lg">Create a new customer</h1>
+        <h1 className=" font-bold text-zinc-600 text-lg">
+          Create a new customer
+        </h1>
 
         {/* input group here */}
         <div className="input-group flex flex-col space-y-1 ">
-          <label htmlFor="Customer">
-            Customer
-          </label>
+          <label htmlFor="Customer">Customer</label>
           <input
             type="text"
             value={title}
@@ -64,9 +64,7 @@ const Form = () => {
 
         {/* input group here */}
         <div className="input-group flex flex-col space-y-1 ">
-          <label htmlFor="street">
-            Street
-          </label>
+          <label htmlFor="street">Street</label>
           <input
             type="text"
             value={address}
@@ -76,9 +74,7 @@ const Form = () => {
         </div>
         {/* input group here */}
         <div className="input-group flex flex-col space-y-1 ">
-          <label htmlFor="postcode">
-            Postcode
-          </label>
+          <label htmlFor="postcode">Postcode</label>
           <input
             type="text"
             value={postcode}
@@ -88,9 +84,7 @@ const Form = () => {
         </div>
         {/* input group here */}
         <div className="input-group flex flex-col space-y-1 ">
-          <label htmlFor="telephone">
-            Telephone
-          </label>
+          <label htmlFor="telephone">Telephone</label>
           <input
             type="text"
             value={telephone}
@@ -101,9 +95,7 @@ const Form = () => {
 
         {/* input group here */}
         <div className="input-group flex flex-col space-y-1 ">
-          <label htmlFor="image">
-            Image
-          </label>
+          <label htmlFor="image">Image</label>
           <input
             type="text"
             value={image}
