@@ -14,7 +14,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${poppins.className} relative`}>
-        <Form />
 
         <main className="h-screen grid md:grid-cols-12  md:grid-rows-12">
           <div className="  md:row-span-12 md:col-span-1">
