@@ -2,22 +2,13 @@ import { MdDownload, MdPersonAdd } from "react-icons/md";
 import Link from "next/link";
 import Card from "./Card";
 
-const getUsers = async () => {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_ROOT_URL}/api/users`, {
-      cache: "no-store",
-    });
-
-    if (!res.ok) {
-      throw new Error("Failed to fetch users");
-    }
-    return res.json();
-  } catch (error) {
-    console.log("Error loading users: ", error);
-  }
-};
 const UserList = async () => {
-  const { users } = await getUsers();
+  const res = await fetch(`${process.env.NEXT_PUBLIC_ROOT_URL}/api/users`, {
+    cache: "no-store",
+  });
+
+  const { users } = await res.json();
+  console.log(users);
   return (
     <div className=" relative">
       <div className=" text-zinc-600 mb-12 flex justify-between">
